@@ -1,0 +1,42 @@
+const XLSX = require("xlsx");
+
+const express = require('express');
+const router = express.Router();
+const parseXlsx = require("excel");
+
+router.get("/excelShow", function(req,res,next){
+  parseXlsx(__dirname + "fresy_net_client.xlsx", function(err,data){
+    res.json(data)
+  })
+})
+
+module.exports = router;
+
+const XLSX = require("xlsx");
+
+let workbook = Xlsx.readFile('directiory name' + 'fresy_net_client.xlsx');
+let worksheet = workbook.Sheets["First Sheet"];
+
+let data = [];
+
+for(let i = 1; i<=12; i++){ //엑셀의 행에 맞춰서 .length로 설정해주고 싶은데 앞에 들어갈 변수나 함수를 어떻게 해야할지 모르겟습니다!
+  let obj = {
+      Supplier : worksheet["공급자" +_i].w,
+      BusinessNumber : worksheet["공급자사업자번호" +_i].w,
+      EmailAdderss : worksheet["공급자 이메일" +_i].w,
+      HeadOffice : worksheet["본사" +_i].w,
+      CollectionEngineer : worksheet["수거기사" +_i].w,
+      DischargeCompany : worksheet["배출업체" +_i].w,
+      Duedate : worksheet["마감일" +_i].w,
+      KindOfSystem : worksheet["종류" +_i].w,
+      UnitPrice : worksheet["단가" +_i].w,
+      RegistrationNumber : worksheet["사업자번호" +_i].w,
+      BillAddress : worksheet["계산서 주소" +_i].w,
+     WorkplaceAddress : worksheet["사업장 주소" +_i].w,
+      Supervisor : worksheet["담당자" +_i].w,
+      Blank : worksheet["" +_i].w,
+      SupervisorEmail : worksheet["담당자 이메일" +_i].w,
+      PhoneNumber : worksheet["전화번호" +_i].w,
+      }
+   data.push(obj);
+ }
