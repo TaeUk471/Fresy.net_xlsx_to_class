@@ -1,0 +1,85 @@
+const xlsx = require('xlsx');
+
+const filePath = fresy_net_client.xlsx;
+const workbook = xlsx.readFile(filePath);
+const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+console.log(xlsx);
+
+let posts = [];
+let post = {};
+
+for (let cell in worksheet) {
+    const cellAsString = cell.toString();
+
+    if (cellAsString[1] !== 'Stop') {
+        if(cellAsString[0] === 'A'){
+            post.supplier = worksheet[cell].v;
+            //공급자
+        }
+        if(cellAsString[0] === 'B'){
+            post.businessNumber = worksheet[cell].v;
+            //공급자사업자번호
+        }
+        if(cellAsString[0] === 'C'){
+            post.emailAdderss  = worksheet[cell].v;
+            //공급자 이메일
+        }
+        if(cellAsString[0] === 'D'){
+            post.headOffice = worksheet[cell].v;
+            //본사
+        }
+        if(cellAsString[0] === 'E'){
+            post.collectionEngineer = worksheet[cell].v;
+             //수거기사
+        }
+        if(cellAsString[0] === 'F'){
+            post.dischargeCompany = worksheet[cell].v;             
+            //배출업체
+        }
+        if(cellAsString[0] === 'G'){
+            post.duedate = worksheet[cell].v;             
+            //마감일
+        }
+        if(cellAsString[0] === 'H'){
+            post.kind = worksheet[cell].v;           
+            //종류
+        }
+        if(cellAsString[0] === 'I'){
+            post.unitPrice = worksheet[cell].v;         
+            //단가
+        }
+        if(cellAsString[0] === 'J'){
+            post.registrationNumber = worksheet[cell].v;        
+            //사업자번호
+        } 
+        if(cellAsString[0] === 'K'){
+            post.billAddress = worksheet[cell].v;       
+            //계산서 주소
+        }
+        if(cellAsString[0] === 'L'){
+            post.workplaceAddress = worksheet[cell].v;        
+            //사업장 주소
+        }
+        if(cellAsString[0] === 'M'){
+            post.supervisor = worksheet[cell].v;        
+            //관리자
+        }
+        if(cellAsString[0] === 'N'){
+            post.blank = worksheet[cell].v;      
+            //빈칸
+        }
+        if(cellAsString[0] === 'O'){
+            post.supervisorEmail = worksheet[cell].v;      
+            //관리자이메일
+        }
+        if(cellAsString[0] === 'P'){
+            post.phoneNumber = worksheet[cell].v;      
+            //휴대전화번호
+        }
+        posts.push(post);
+            post = {};
+    }
+}
+
+console.log(posts);
